@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback Collection Portal</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm rounded-3 mx-3 mx-md-5">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><i class="bi bi-chat-square-text-fill me-2"></i>Feedback Portal</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#submit">Submit</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#view">View</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#stats">Stats</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Container -->
+    <div class="container mt-4" id="home">
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <div class="row align-items-center">
+                <div class="col-md-8">
+                    <h1 class="display-5 fw-bold">Share Your Feedback</h1>
+                    <p class="lead">Help us improve by sharing your thoughts.</p>
+                    <a href="#submit" class="btn btn-light btn-lg rounded-pill px-4">Submit Feedback</a>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="bi bi-chat-square-quote-fill hero-icon"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alert -->
+        <div class="alert alert-info alert-dismissible fade show d-flex align-items-center" role="alert">
+            <i class="bi bi-info-circle-fill me-2"></i>
+            <div>Feedback is stored in your browser's localStorage.</div>
+            <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert"></button>
+        </div>
+
+        <!-- Carousel -->
+        <div id="feedbackCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+            <div class="carousel-inner rounded-3">
+                <div class="carousel-item active">
+                    <div class="carousel-slide bg-primary">
+                        <i class="bi bi-star-fill display-1 mb-3"></i>
+                        <h2>Rate Your Experience</h2>
+                        <p>Share with our 5-star rating system.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-slide bg-success">
+                        <i class="bi bi-card-text display-1 mb-3"></i>
+                        <h2>Detailed Comments</h2>
+                        <p>Tell us what you liked or what to improve.</p>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="carousel-slide bg-warning text-dark">
+                        <i class="bi bi-bar-chart-fill display-1 mb-3"></i>
+                        <h2>View Statistics</h2>
+                        <p>Check feedback analytics in real-time.</p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#feedbackCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon"></span>
+            </button>
+        </div>
+
+        <!-- Feedback Form -->
+        <div class="feedback-form mb-5" id="submit">
+            <h2 class="mb-4"><i class="bi bi-pencil-square me-2"></i>Submit Feedback</h2>
+            <form id="feedbackForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="name" class="form-label">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Your name" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="Your email">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Category</label>
+                    <select class="form-select" id="category" required>
+                        <option value="" disabled selected>Select category</option>
+                        <option value="Academic">Academic</option>
+                        <option value="Administrative">Administrative</option>
+                        <option value="Facilities">Facilities</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="mb-4">
+                    <label class="form-label">Rating</label>
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5">★</label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4">★</label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3">★</label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2">★</label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1">★</label>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <label for="comments" class="form-label">Feedback</label>
+                    <textarea class="form-control" id="comments" rows="3" placeholder="Your feedback..." required></textarea>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-custom"><i class="bi bi-send me-2"></i>Submit</button>
+                    <button type="button" class="btn btn-outline-secondary" id="clearForm">Clear</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Statistics -->
+        <div class="chart-container mb-5" id="stats">
+            <h2 class="mb-4"><i class="bi bi-bar-chart me-2"></i>Statistics</h2>
+            <div class="row">
+                <div class="col-md-3 mb-3"><div class="stat-card"><i class="bi bi-chat-square-text text-primary"></i><div class="stat-number" id="totalFeedback">0</div><div>Total</div></div></div>
+                <div class="col-md-3 mb-3"><div class="stat-card"><i class="bi bi-star text-warning"></i><div class="stat-number" id="avgRating">0.0</div><div>Avg Rating</div></div></div>
+                <div class="col-md-3 mb-3"><div class="stat-card"><i class="bi bi-emoji-smile text-success"></i><div class="stat-number" id="positiveFeedback">0</div><div>Positive</div></div></div>
+                <div class="col-md-3 mb-3"><div class="stat-card"><i class="bi bi-emoji-frown text-danger"></i><div class="stat-number" id="negativeFeedback">0</div><div>Needs Improve</div></div></div>
+            </div>
+        </div>
+
+        <!-- View Feedback -->
+        <div id="view">
+            <h2 class="mb-4"><i class="bi bi-card-text me-2"></i>Recent Feedback</h2>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="input-group">
+                        <span class="input-group-text"><i class="bi bi-search"></i></span>
+                        <input type="text" class="form-control" id="searchFeedback" placeholder="Search...">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <select class="form-select" id="filterCategory">
+                        <option value="all">All Categories</option>
+                        <option value="Academic">Academic</option>
+                        <option value="Administrative">Administrative</option>
+                        <option value="Facilities">Facilities</option>
+                    </select>
+                </div>
+            </div>
+            <div id="feedbackList" class="row">
+                <div class="empty-state">
+                    <i class="bi bi-chat-square"></i>
+                    <h4>No feedback yet</h4>
+                    <p>Be the first to share!</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+                <button class="btn btn-outline-primary" id="loadMore" style="display: none;">Load More</button>
+                <button class="btn btn-outline-danger" id="clearAllFeedback">Clear All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="feedbackModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Feedback Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <h6 id="modalName"></h6>
+                    <small class="text-muted" id="modalEmail"></small>
+                    <div class="rating-stars mt-2" id="modalRating"></div>
+                    <p id="modalComments" class="mt-3"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="bi bi-chat-square-text-fill me-2"></i>Feedback Portal</h5>
+                    <p>FET Assignment 3 - JavaScript & Bootstrap</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>© 2025 Feedback Collection Portal</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
